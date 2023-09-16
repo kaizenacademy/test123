@@ -9,3 +9,12 @@ instance_type = var.instance_type
 availability_zone = var.az1
 key_name = var.key_pair
 }
+
+data "aws_ami" "ubuntu" {
+  most_recent = true
+  filter {
+    name   = "name"
+    values = [var.ami_name]
+  }
+  owners = ["self"]
+}
